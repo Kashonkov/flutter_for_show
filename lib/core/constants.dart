@@ -1,0 +1,1 @@
+const String SVG_PATH = 'assets/graphics/svg';
