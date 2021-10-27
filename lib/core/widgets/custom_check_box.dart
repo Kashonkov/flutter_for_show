@@ -3,12 +3,13 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 /// A material design checkbox.
 ///
 /// The checkbox itself does not maintain any state. Instead, when the state of
-/// the checkbox changes, the widget calls the [onChanged] callback. Most
+/// the checkbox changes, the widgets calls the [onChanged] callback. Most
 /// widgets that use a checkbox will listen for the [onChanged] callback and
 /// rebuild the checkbox with a new [value] to update the visual appearance of
 /// the checkbox.
@@ -17,7 +18,7 @@ import 'package:flutter/widgets.dart';
 /// if [tristate] is true. When [value] is null a dash is displayed. By default
 /// [tristate] is false and the checkbox's [value] must be true or false.
 ///
-/// Requires one of its ancestors to be a [Material] widget.
+/// Requires one of its ancestors to be a [Material] widgets.
 ///
 /// {@tool dartpad --template=stateful_widget_scaffold_center}
 ///
@@ -59,9 +60,9 @@ import 'package:flutter/widgets.dart';
 ///
 /// See also:
 ///
-///  * [CheckboxListTile], which combines this widget with a [ListTile] so that
+///  * [CheckboxListTile], which combines this widgets with a [ListTile] so that
 ///    you can give the checkbox a label.
-///  * [Switch], a widget with semantics similar to [Checkbox].
+///  * [Switch], a widgets with semantics similar to [Checkbox].
 ///  * [Radio], for selecting among a set of explicit values.
 ///  * [Slider], for selecting a value in a range.
 ///  * <https://material.io/design/components/selection-controls.html#checkboxes>
@@ -70,7 +71,7 @@ class CustomCheckbox extends StatefulWidget {
   /// Creates a material design checkbox.
   ///
   /// The checkbox itself does not maintain any state. Instead, when the state of
-  /// the checkbox changes, the widget calls the [onChanged] callback. Most
+  /// the checkbox changes, the widgets calls the [onChanged] callback. Most
   /// widgets that use a checkbox will listen for the [onChanged] callback and
   /// rebuild the checkbox with a new [value] to update the visual appearance of
   /// the checkbox.
@@ -115,7 +116,7 @@ class CustomCheckbox extends StatefulWidget {
   /// Called when the value of the checkbox should change.
   ///
   /// The checkbox passes the new value to the callback but does not actually
-  /// change state until the parent widget rebuilds the checkbox with the new
+  /// change state until the parent widgets rebuilds the checkbox with the new
   /// value.
   ///
   /// If this callback is null, the checkbox will be displayed as disabled
@@ -143,7 +144,7 @@ class CustomCheckbox extends StatefulWidget {
 
   /// {@template flutter.material.checkbox.mouseCursor}
   /// The cursor for a mouse pointer when it enters or is hovering over the
-  /// widget.
+  /// widgets.
   ///
   /// If [mouseCursor] is a [MaterialStateProperty<MouseCursor>],
   /// [MaterialStateProperty.resolve] is used for the following [MaterialState]s:
@@ -327,7 +328,7 @@ class CustomCheckbox extends StatefulWidget {
   /// is used. If that's null then the side will be width 2.
   final BorderSide? side;
 
-  /// The width of a checkbox widget.
+  /// The width of a checkbox widgets.
   static const double width = 31.0;
 
   @override

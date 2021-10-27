@@ -17,55 +17,6 @@ class _$NetAuthorizationService extends NetAuthorizationService {
   final definitionType = NetAuthorizationService;
 
   @override
-  Future<Response<BaseResponse>> login(Map<String, dynamic> req) {
-    final $url = 'user/login';
-    final $params = req;
-    final $request = Request('POST', $url, client.baseUrl, parameters: $params);
-    return client.send<BaseResponse, BaseResponse>($request);
-  }
-
-  @override
-  Future<Response<BaseResponse>> registration(Map<String, dynamic> req) {
-    final $url = 'user/registration';
-    final $params = req;
-    final $request = Request('POST', $url, client.baseUrl, parameters: $params);
-    return client.send<BaseResponse, BaseResponse>($request);
-  }
-
-  @override
-  Future<Response<BaseResponse>> smsRegistrationConfirmation(
-      Map<String, dynamic> req) {
-    final $url = 'user/confirmation';
-    final $params = req;
-    final $request = Request('POST', $url, client.baseUrl, parameters: $params);
-    return client.send<BaseResponse, BaseResponse>($request);
-  }
-
-  @override
-  Future<Response<BaseResponse>> sendConfirmationCode(
-      Map<String, dynamic> req) {
-    final $url = 'user/confirmationCode';
-    final $params = req;
-    final $request = Request('POST', $url, client.baseUrl, parameters: $params);
-    return client.send<BaseResponse, BaseResponse>($request);
-  }
-
-  @override
-  Future<Response<BaseResponse>> changePassword(Map<String, dynamic> req) {
-    final $url = 'user/passwordChanging';
-    final $params = req;
-    final $request = Request('POST', $url, client.baseUrl, parameters: $params);
-    return client.send<BaseResponse, BaseResponse>($request);
-  }
-
-  @override
-  Future<Response<BaseResponse>> prolongToken() {
-    final $url = 'user/tokenProlongation';
-    final $request = Request('GET', $url, client.baseUrl);
-    return client.send<BaseResponse, BaseResponse>($request);
-  }
-
-  @override
   Future<Response<BaseResponse>> loginByFb(Map<String, dynamic> req) {
     final $url = 'user/loginFacebook';
     final $params = req;

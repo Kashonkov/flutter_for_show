@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:i_talent/core/widgets/body_text_1.dart';
-import 'package:i_talent/core/widgets/body_text_2.dart';
-import 'package:i_talent/core/widgets/input_field.dart';
-import 'package:i_talent/core/widgets/international_phone_input/models/country_model.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/test/test_helper.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/util.dart';
-import 'package:i_talent/core/widgets/local_text_provider.dart';
+import 'package:flutter_for_show/core/widgets/body_text_1.dart';
+import 'package:flutter_for_show/core/widgets/body_text_2.dart';
+import 'package:flutter_for_show/core/widgets/input_field.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/models/country_model.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/test/test_helper.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/util.dart';
+import 'package:flutter_for_show/core/widgets/local_text_provider.dart';
 
 /// Creates a list of Countries with a search textfield.
 class CountrySearchListWidget extends StatefulWidget {

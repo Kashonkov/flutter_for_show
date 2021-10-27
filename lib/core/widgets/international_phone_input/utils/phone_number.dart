@@ -3,8 +3,8 @@ import 'dart:math';
 
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:equatable/equatable.dart';
-import 'package:i_talent/core/widgets/international_phone_input/models/country_list.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/phone_number/phone_number_util.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/models/country_list.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/phone_number/phone_number_util.dart';
 
 /// Type of phone numbers.
 enum PhoneNumberType {

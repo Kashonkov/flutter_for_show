@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:i_talent/core/bloc/news.dart';
-import 'package:i_talent/core/bloc/with_state_or_exception.dart';
-import 'package:i_talent/core/exceptions/exceptions.dart';
-import 'package:i_talent/core/string/string.dart';
+import 'package:flutter_for_show/core/bloc/news.dart';
+import 'package:flutter_for_show/core/bloc/with_state_or_exception.dart';
+import 'package:flutter_for_show/core/exceptions/exceptions.dart';
+
 
 abstract class BaseBloc<EventT, StateT extends DefState> extends Bloc<EventT, StateT> {
   final StreamController<BlocNews> _newsController = StreamController.broadcast();
@@ -21,7 +21,7 @@ abstract class BaseBloc<EventT, StateT extends DefState> extends Bloc<EventT, St
 
   StreamSubscription<StateT> _onListen(Stream<StateT> input, bool cancelOnError) {
     late StreamSubscription<StateT> subscription;
-    var controller = new StreamController<StateT>(
+    var controller = StreamController<StateT>(
         onPause: () {
           subscription.pause();
         },
@@ -40,8 +40,8 @@ abstract class BaseBloc<EventT, StateT extends DefState> extends Bloc<EventT, St
         onFailure(ErrorBlocNews(error.message));
       } else {
         debugPrint("stateOrException " + stackTrace.toString());
-        controller.add(state.failure(errorUnknown));
-        onFailure(ErrorBlocNews(error.message ?? errorUnknown));
+        controller.add(state.failure("Unknown error"));
+        onFailure(ErrorBlocNews(error.message ?? "Unknown error"));
       }
       controller.close();
     }, onDone: controller.close, cancelOnError: cancelOnError);

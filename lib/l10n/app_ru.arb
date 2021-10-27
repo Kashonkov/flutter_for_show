@@ -1,0 +1,21 @@
+{
+  "apple_signing": "Вход через Apple ID",
+  "phone_signing": "Вход по номеру",
+  "fb_signing": "Вход через Facebook",
+  "google_signing": "Вход через Google",
+  "accept_read_terms": "Я подтверждаю обработку персональных данных и прочитал",
+  "user_agreement": "пользовательское соглашение",
+  "continue_title": "Продолжить",
+  "number_input": "Введите номер",
+  "your_phone": "Ваш телефон",
+  "phone_hint": "--- --- ----",
+  "send_code": "Выслать код",
+  "accept_personal_process": "Нажимая на кнопку вы даёте согласие на обработку данных",
+  "error_code": "Код ошибки: ",
+  "copied_to_buffer": "Скопировано в буфер обмена",
+  "error": "Ошибка",
+  "search": "Поиск",
+  "net_error": "Проверьте подключения к интернету",
+  "country_search_title": "Поиск по названию страны",
+  "unknown_error": "Неизвестная ошибка"
+}

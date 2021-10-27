@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:i_talent/core/widgets/international_phone_input/models/country_model.dart';
-import 'package:i_talent/core/widgets/international_phone_input/widgets/input_widget.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/models/country_model.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/widgets/input_widget.dart';
 
 
 /// [CountryComparator] takes two countries: A and B.

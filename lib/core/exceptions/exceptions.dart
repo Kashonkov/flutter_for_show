@@ -2,10 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:chopper/chopper.dart';
+import 'package:flutter_for_show/app.dart';
+import 'package:flutter_for_show/core/network/base_response.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:i_talent/app.dart';
-import 'package:i_talent/core/network/model/base_response.dart';
-import 'package:i_talent/core/resources/string.dart';
 
 class ExceptionWithMessage implements Exception {
   final String message;
@@ -20,7 +19,7 @@ class ServerException extends ExceptionWithMessage {
 }
 
 class ServerConnectionException extends ExceptionWithMessage {
-  ServerConnectionException() : super("${string.errorServerTryLater}");
+  ServerConnectionException() : super("Try later");
 }
 
 class EmptyDataException extends ExceptionWithMessage {

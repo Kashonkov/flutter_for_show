@@ -1,22 +1,4 @@
 import 'package:flutter/material.dart';
-
-class AppColors {
-  static const primary = Color(0xFFFF7313);
-  static const variant = Color(0xFFFFAF13);
-  static const backButtonColor = Color(0xFFFFFFFF);
-  static const background = Color(0xFF0C0C0C);
-  static const underline = Color(0xFF515254);
-  static const underlineFocused = Color(0xFFFFFFFF);
-  static const dividerColor = Color(0x30FFFFFF);
-  static const errorBackground = Color(0xFF131313);
-  static const errorSmileColor = Color(0xFFFF7313);
-  static const unselectedNavigationItem = Color(0xFFA1A1A1);
-  static const bottomNavigationBackground = Color(0xFF131313);
-  static const transparentPhotoForeground = Color(0x30FFFFFF);
-  static const transparentPhotoDarkForeground = Color(0x50000000);
-  static const textColor = Color(0xFFFFFFFF);
-}
-
 class AppColorsNew{
   static const primary = Color(0xFF29B6F6);
   static const primaryVariant = Color(0xFF1769aa);

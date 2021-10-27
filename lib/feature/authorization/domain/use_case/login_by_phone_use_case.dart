@@ -1,5 +1,5 @@
-import 'package:i_talent/core/use_case/use_case.dart';
-import 'package:i_talent/feature/authorization/domain/repository/authorization_repository.dart';
+import 'package:flutter_for_show/core/use_case/use_case.dart';
+import 'package:flutter_for_show/feature/authorization/domain/repository/authorization_repository.dart';
 
 class LoginByPhoneUseCase implements UseCase<void, LoginByPhoneUseCaseParams> {
   final AuthorizationRepository repository;

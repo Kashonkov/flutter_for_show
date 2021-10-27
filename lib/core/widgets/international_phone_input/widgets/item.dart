@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:i_talent/core/widgets/body_text_1.dart';
-import 'package:i_talent/core/widgets/international_phone_input/models/country_model.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/util.dart';
+import 'package:flutter_for_show/core/widgets/body_text_1.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/models/country_model.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/util.dart';
 
 /// [Item]
 class Item extends StatelessWidget {

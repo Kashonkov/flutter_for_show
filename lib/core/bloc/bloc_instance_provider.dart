@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:i_talent/core/bloc/base_bloc.dart';
-import 'package:i_talent/core/bloc/news.dart';
-import 'package:i_talent/core/widgets/dialog.dart';
+import 'package:flutter_for_show/core/bloc/base_bloc.dart';
+import 'package:flutter_for_show/core/bloc/news.dart';
+import 'package:flutter_for_show/core/widgets/dialog.dart';
 
 abstract class StateWithBloc<T extends BaseBloc, P extends StatefulWidget> extends State<P> {
   late T bloc;

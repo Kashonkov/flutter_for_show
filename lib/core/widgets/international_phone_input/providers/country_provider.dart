@@ -1,5 +1,5 @@
-import 'package:i_talent/core/widgets/international_phone_input/models/country_list.dart';
-import 'package:i_talent/core/widgets/international_phone_input/models/country_model.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/models/country_list.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/models/country_model.dart';
 
 const String PropertyName = 'alpha_2_code';
 

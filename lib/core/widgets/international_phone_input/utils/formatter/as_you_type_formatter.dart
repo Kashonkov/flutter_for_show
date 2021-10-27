@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_for_show/core/widget/international_phone_input/utils/phone_number/phone_number_util.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/phone_number/phone_number_util.dart';
 
 typedef OnInputFormatted<T> = void Function(T value);
 

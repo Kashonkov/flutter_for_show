@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_for_show/core/extensions/color_scheme_extensions.dart';
+import 'package:flutter_for_show/core/extensions/string_extensions.dart';
+import 'package:flutter_for_show/core/widgets/body_text_1.dart';
+import 'package:flutter_for_show/core/widgets/button_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 
 showErrorDialog({
   required BuildContext context,

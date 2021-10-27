@@ -1,7 +1,7 @@
 import 'package:built_value/built_value.dart';
-import 'package:i_talent/core/bloc/with_state_or_exception.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/phone_number.dart';
-import 'package:i_talent/feature/authorization/presentation/registration/registration_page/registration_step.dart';
+import 'package:flutter_for_show/core/bloc/with_state_or_exception.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/phone_number.dart';
+import 'package:flutter_for_show/feature/authorization/presentation/registration/registration_page/registration_step.dart';
 
 part 'registration_state.g.dart';
 

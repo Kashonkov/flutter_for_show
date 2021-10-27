@@ -1,4 +1,4 @@
-import 'package:i_talent/core/widgets/international_phone_input/models/country_model.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/models/country_model.dart';
 
 /// [Utils] class contains utility methods for `intl_phone_number_input` library
 class Utils {

@@ -2,17 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:i_talent/core/widgets/input_field.dart';
-import 'package:i_talent/core/widgets/international_phone_input/models/country_model.dart';
-import 'package:i_talent/core/widgets/international_phone_input/providers/country_provider.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/formatter/as_you_type_formatter.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/phone_number.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/phone_number/phone_number_util.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/selector_config.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/test/test_helper.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/util.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/widget_view.dart';
-import 'package:i_talent/core/widgets/international_phone_input/widgets/selector_button.dart';
+import 'package:flutter_for_show/core/widgets/input_field.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/models/country_model.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/providers/country_provider.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/formatter/as_you_type_formatter.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/phone_number.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/phone_number/phone_number_util.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/selector_config.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/test/test_helper.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/util.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/widget_view.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/widgets/selector_button.dart';
 
 /// Enum for [SelectorButton] types.
 ///
@@ -173,7 +173,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
     super.didUpdateWidget(oldWidget);
   }
 
-  /// [initialiseWidget] sets initial values of the widget
+  /// [initialiseWidget] sets initial values of the widgets
   void initialiseWidget() async {
     if (widget.initialValue != null) {
       if (widget.initialValue!.phoneNumber != null &&
@@ -215,8 +215,8 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
     }
   }
 
-  /// Listener that validates changes from the widget, returns a bool to
-  /// the `ValueCallback` [widget.onInputValidated]
+  /// Listener that validates changes from the widgets, returns a bool to
+  /// the `ValueCallback` [widgets.onInputValidated]
   void phoneNumberControllerListener() {
     if (this.mounted) {
       String parsedPhoneNumberString = controller!.text.replaceAll(RegExp(r'[^\d+]'), '');

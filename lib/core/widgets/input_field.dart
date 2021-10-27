@@ -2,11 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:i_talent/core/extensions/color_scheme_extensions.dart';
-import 'package:i_talent/core/extensions/string_extensions.dart';
-import 'package:i_talent/core/widgets/local_text_provider.dart';
-import 'package:i_talent/core/widgets/typeahead/flutter_typeahead.dart';
-import 'package:i_talent/core/widgets/typeahead/typedef.dart';
+import 'package:flutter_for_show/core/extensions/color_scheme_extensions.dart';
+import 'package:flutter_for_show/core/extensions/string_extensions.dart';
+import 'package:flutter_for_show/core/widgets/local_text_provider.dart';
 
 class InputField extends StatefulWidget {
   final String? hint;
@@ -129,12 +127,12 @@ class _InputFieldState extends State<InputField> {
         floatingLabelStyle: Theme.of(context).textTheme.caption!.copyWith(
             color: hasFocus() ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.optional2),
         focusColor: Theme.of(context).colorScheme.primary,
-        prefixIconConstraints: BoxConstraints(
+        prefixIconConstraints: const BoxConstraints(
           minHeight: 0,
           minWidth: 0,
         ),
         prefixIcon: widget.prefixIcon,
-        suffixIconConstraints: BoxConstraints(
+        suffixIconConstraints: const BoxConstraints(
           minHeight: 0,
           minWidth: 0,
         ),
@@ -346,161 +344,4 @@ class _SearchFieldState extends State<SearchField> with LocaleTextProvider {
               )
             : null,
       );
-}
-
-class SuggestingField<T> extends StatelessWidget {
-  final BuildContext context;
-  final String? hint;
-  final String? helperText;
-  final String? errorText;
-  final String? labelText;
-  final int? maxLines;
-  final int minLength;
-  final bool? isEnable;
-  final Duration? debounce;
-  final String notFoundText;
-  final List<TextInputFormatter>? inputFormatters;
-  final ValueChanged onChanged;
-  final TextEditingController? controller;
-  final SuggestionsCallback<T> suggestionCallback;
-  final SuggestionSelectionCallback<T> suggestionSelectionCallback;
-  final ItemBuilder<T> itemBuilder;
-  final String? shortQueryError;
-  final WidgetBuilder? noItemsBuilder;
-  final WidgetBuilder? loadingBuilder;
-  final SuggestionsBoxController? suggectionController;
-  final ScrollToEndCallback<T>? scrollToEndCallback;
-
-  const SuggestingField({
-    Key? key,
-    required this.context,
-    this.hint,
-    required this.onChanged,
-    this.helperText,
-    this.errorText,
-    this.labelText,
-    this.maxLines,
-    this.scrollToEndCallback,
-    required this.minLength,
-    this.isEnable = true,
-    this.shortQueryError,
-    this.inputFormatters,
-    this.controller,
-    required this.suggestionSelectionCallback,
-    required this.suggestionCallback,
-    this.noItemsBuilder,
-    this.loadingBuilder,
-    required this.itemBuilder,
-    required this.debounce,
-    required this.notFoundText,
-    this.suggectionController,
-  })  : assert(!(notFoundText == null && noItemsBuilder == null)),
-        super(key: key);
-
-  InputDecoration _defaultDecoration(
-    BuildContext context, {
-    String? hint,
-    String? helperText,
-    String? errorText,
-    String? labelText,
-    EdgeInsets? padding = EdgeInsets.zero,
-  }) {
-    return InputDecoration(
-      //   enabledBorder: needUnderline ? null : InputBorder.none,
-      //   focusedBorder: needUnderline ? null : InputBorder.none,
-      contentPadding: padding,
-      hintText: hint,
-      isDense: true,
-      hintMaxLines: 15,
-      disabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.38))),
-      helperText: helperText,
-      helperMaxLines: 15,
-      errorText: errorText,
-      labelText: labelText,
-      focusColor: Theme.of(context).colorScheme.primary,
-      prefixIconConstraints: BoxConstraints(
-        minHeight: 0,
-        minWidth: 0,
-      ),
-      // prefixIcon: widget.prefixIcon,
-      suffixIconConstraints: BoxConstraints(
-        minHeight: 0,
-        minWidth: 0,
-      ),
-      // suffixIcon: widget.suffixIcon
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.only(top: 8),
-        child: TypeAheadField<T>(
-          textFieldConfiguration: TextFieldConfiguration(
-              maxLines: maxLines  ?? 1,
-              enabled: isEnable ?? true,
-              style: Theme.of(context).textTheme.bodyText1,
-              controller: controller,
-              autofocus: false,
-              textCapitalization: TextCapitalization.sentences,
-              onChanged: onChanged,
-              decoration: _defaultDecoration(
-                context,
-                hint: hint,
-                helperText: helperText,
-                errorText: errorText,
-                labelText: labelText,
-              )),
-          debounceDuration: debounce ?? Duration(seconds: 1),
-          scrollToEndCallback: scrollToEndCallback,
-          suggestionsCallback: (pattern) {
-            if (pattern.length < minLength) {
-              return <T>[];
-              // throw ExceptionWithMessage(showQ);
-            } else {
-              return suggestionCallback.call(pattern);
-            }
-          },
-          itemBuilder: itemBuilder,
-          onSuggestionSelected: suggestionSelectionCallback,
-          noItemsFoundBuilder: noItemsBuilder ??
-              (context) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(notFoundText),
-                );
-              },
-          loadingBuilder: loadingBuilder ??
-              (context) {
-                return Container(
-                  margin: EdgeInsets.all(8),
-                  width: double.infinity,
-                  height: 16,
-                  child: Center(
-                    child: SizedBox(
-                      height: 16,
-                      width: 16,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
-                      ),
-                    ),
-                  ),
-                );
-              },
-          hideOnEmpty: false,
-          hideOnLoading: false,
-          hideOnError: true,
-          keepSuggestionsOnLoading: true,
-          hideSuggestionsOnKeyboardHide: false,
-          suggestionsBoxController: suggectionController,
-          suggestionsBoxDecoration: SuggestionsBoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
-            elevation: 2,
-            clipBehavior: Clip.antiAlias,
-            borderRadius: BorderRadius.all(Radius.circular(8))
-          ),
-        ));
-  }
 }

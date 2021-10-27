@@ -1,206 +1,33 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_for_show/core/constants.dart';
+import 'package:flutter_for_show/core/extensions/color_scheme_extensions.dart';
+import 'package:flutter_for_show/core/bloc/bloc_instance_provider.dart';
+import 'package:flutter_for_show/core/widgets/body_text_1.dart';
+import 'package:flutter_for_show/core/widgets/body_text_2.dart';
+import 'package:flutter_for_show/core/widgets/caption_text.dart';
+import 'package:flutter_for_show/core/widgets/custom_check_box.dart';
+import 'package:flutter_for_show/core/widgets/elevated_main_button.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/phone_number.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/selector_config.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/widgets/input_widget.dart';
+import 'package:flutter_for_show/core/widgets/local_text_provider.dart';
+import 'package:flutter_for_show/core/widgets/positioned_aligned.dart';
+import 'package:flutter_for_show/feature/authorization/presentation/registration/registration_page/bloc/registration_bloc.dart';
+import 'package:flutter_for_show/feature/authorization/presentation/registration/registration_page/bloc/registration_event.dart';
+import 'package:flutter_for_show/feature/authorization/presentation/registration/registration_page/bloc/registration_state.dart';
+import 'package:flutter_for_show/feature/authorization/presentation/registration/registration_page/registration_step.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:i_talent/app.dart';
-import 'package:i_talent/core/bloc/bloc_instance_provider.dart';
-import 'package:i_talent/core/extensions/color_scheme_extensions.dart';
-import 'package:i_talent/core/extensions/string_extensions.dart';
-import 'package:i_talent/core/resources/constants.dart';
-import 'package:i_talent/core/widgets/body_text_1.dart';
-import 'package:i_talent/core/widgets/body_text_2.dart';
-import 'package:i_talent/core/widgets/caption_text.dart';
-import 'package:i_talent/core/widgets/custom_check_box.dart';
-import 'package:i_talent/core/widgets/elevated_main_button.dart';
-import 'package:i_talent/core/widgets/formatters/phone_formatter.dart';
-import 'package:i_talent/core/widgets/image_button.dart';
-import 'package:i_talent/core/widgets/input_field.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/phone_number.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/selector_config.dart';
-import 'package:i_talent/core/widgets/international_phone_input/widgets/input_widget.dart';
-import 'package:i_talent/core/widgets/local_text_provider.dart';
-import 'package:i_talent/core/widgets/next_icon_button.dart';
-import 'package:i_talent/core/widgets/positioned_aligned.dart';
-import 'package:i_talent/core/widgets/subtitle_text.dart';
-import 'package:i_talent/feature/authorization/presentation/registration/registration_page/bloc/registration_bloc.dart';
-import 'package:i_talent/feature/authorization/presentation/registration/registration_page/bloc/registration_event.dart';
-import 'package:i_talent/feature/authorization/presentation/registration/registration_page/bloc/registration_state.dart';
-import 'package:i_talent/feature/authorization/presentation/registration/registration_page/registration_step.dart';
-import 'package:i_talent/feature/authorization/presentation/widgets/authorization_page_body.dart';
-import 'package:i_talent/feature/terms/presentation/content_terms_widget.dart';
-import 'package:i_talent/navigator/main_navigator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegistrationPage extends StatefulWidget {
   RegistrationPage({Key? key}) : super(key: key);
 
   @override
-  State<RegistrationPage> createState() => isNewDesign ? _NewRegistrationPageState() : _RegistrationPageState();
-}
-
-class _RegistrationPageState extends StateWithBloc<RegistrationBloc, RegistrationPage> with LocaleTextProvider {
-  late TextEditingController _loginController;
-  late TextEditingController _passwordController;
-  late TextEditingController _repeatPasswordController;
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-    _loginController = TextEditingController();
-    _passwordController = TextEditingController();
-    _repeatPasswordController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _loginController.dispose();
-    _passwordController.dispose();
-    _repeatPasswordController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocConsumer(
-      bloc: bloc,
-      listener: (context, RegistrationState state) {},
-      builder: (context, RegistrationState state) => AuthorizationPageBody(
-        title: local.registration,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 58, right: 20, left: 20),
-            child: InputField(
-              inputFormatters: [PhoneFormatter()],
-              inputType: TextInputType.phone,
-              controller: _loginController,
-              hint: local.phone_number,
-            ),
-          ),
-          Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 36, right: 20, left: 20),
-                  child: ObscuringInputField(
-                    controller: _passwordController,
-                    onChange: (value) {
-                      _formKey.currentState!.validate();
-                    },
-                    hint: local.password,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 36, right: 20, left: 20),
-                  child: ObscuringInputField(
-                    controller: _repeatPasswordController,
-                    hint: local.repeat_password,
-                    onChange: (value) {
-                      _formKey.currentState!.validate();
-                    },
-                    validator: (value) {
-                      if (value.isNullOrEmpty() || value == _passwordController.text) {
-                        return null;
-                      } else {
-                        return local.password_are_not_equals;
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 28, right: 20, left: 4),
-            child: Row(
-              children: [
-                Checkbox(
-                  value: state.isTermsAccepted,
-                  onChanged: (value) => bloc.add(AcceptedTermsEvent(value ?? false)),
-                  checkColor: Theme.of(context).colorScheme.primary,
-                  fillColor: MaterialStateProperty.resolveWith((states) {
-                    if (states.contains(MaterialState.selected)) {
-                      return Theme.of(context).colorScheme.background;
-                    } else {
-                      return Theme.of(context).colorScheme.primary;
-                    }
-                  }),
-                ),
-                Expanded(
-                    child: Wrap(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: BodyText2(
-                        local.user_accept,
-                      ),
-                    ),
-                    ContentTermsWidget(
-                      text: local.user_term,
-                      paddings: EdgeInsets.symmetric(horizontal: 8),
-                    ),
-                  ],
-                )),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 28, right: 20, left: 20),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SubtitleText(local.already_have_account),
-                    InkWell(
-                      onTap: () {
-                        FocusScope.of(context).unfocus();
-                        Navigator.of(context).pop();
-                      },
-                      child: SubtitleTextUnderline(
-                        local.sign_in,
-                      ),
-                    )
-                  ],
-                ),
-                if (state.isTermsAccepted)
-                  NextIconButton(
-                    isLoading: state.isLoading,
-                    isEnable: state.isTermsAccepted,
-                    onTap: () {
-                      FocusScope.of(context).unfocus();
-                      bloc.add(OnRegisterClickedEvent(
-                        _loginController.text,
-                      )); //_passwordController.text, _repeatPasswordController.text)
-                    },
-                  ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 32, right: 14, left: 14),
-            child: Row(
-              children: [
-                ImageAssetButton(
-                  imageName: 'vk.png',
-                  width: 82,
-                  height: 68,
-                ),
-                ImageAssetButton(
-                  imageName: 'fb.png',
-                  width: 82,
-                  height: 68,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  State<RegistrationPage> createState() => _NewRegistrationPageState();
 }
 
 class _NewRegistrationPageState extends StateWithBloc<RegistrationBloc, RegistrationPage>
@@ -415,7 +242,14 @@ class _NewRegistrationPageState extends StateWithBloc<RegistrationBloc, Registra
                       BodyText2(local.accept_read_terms, color: Theme.of(context).colorScheme.optional2),
                       InkWell(
                         onTap: () {
-                          MainNavigator.navigateToTermsPage();
+                          Fluttertoast.showToast(
+                              msg: "In real app redirect to Terms",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              textColor: Colors.white,
+                              fontSize: 16.0
+                          );
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(
@@ -575,7 +409,7 @@ class _NewRegistrationPageState extends StateWithBloc<RegistrationBloc, Registra
             onInputChanged: (PhoneNumber number) {
               bloc.add(OnPhoneChangeEvent(number));
             },
-            selectorConfig: SelectorConfig(
+            selectorConfig: const SelectorConfig(
               selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
             ),
             ignoreBlank: false,
@@ -589,15 +423,6 @@ class _NewRegistrationPageState extends StateWithBloc<RegistrationBloc, Registra
             keyboardType: TextInputType.numberWithOptions(signed: true, decimal: true),
           ),
         ),
-        // InputField(
-        //   labelText: local.your_phone,
-        //   hint: local.phone_hint,
-        //   inputFormatters: [PhoneFormatter()],
-        //   controller: _phoneController,
-        //   onChange: (value) {
-        //     bloc.add(OnPhoneChangeEvent(value));
-        //   },
-        // ),
       ),
       if (animation.value > 0.75)
         PositionedAligned(
@@ -614,7 +439,7 @@ class _NewRegistrationPageState extends StateWithBloc<RegistrationBloc, Registra
                     height: 56,
                     decoration: BoxDecoration(
                       border: Border.all(color: Theme.of(context).colorScheme.optional),
-                      borderRadius: BorderRadius.all(Radius.circular(32.0) //                 <--- border radius here
+                      borderRadius: const BorderRadius.all(Radius.circular(32.0) //                 <--- border radius here
                           ),
                     ),
                     child: Row(
@@ -628,7 +453,7 @@ class _NewRegistrationPageState extends StateWithBloc<RegistrationBloc, Registra
                             style: Theme.of(context).textTheme.button,
                           ),
                         )),
-                        Padding(
+                        const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 38), child: Icon(Icons.arrow_upward_outlined)),
                       ],
                     ),

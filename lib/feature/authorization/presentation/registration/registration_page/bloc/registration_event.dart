@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:i_talent/core/widgets/international_phone_input/utils/phone_number.dart';
+import 'package:flutter_for_show/core/widgets/international_phone_input/utils/phone_number.dart';
 
 abstract class RegistrationEvent {
   const RegistrationEvent();

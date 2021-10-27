@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:i_talent/core/resources/colors.dart';
-
-extension ExtendedColorScheme on ColorScheme {
-  Color get backButtonColor => AppColors.backButtonColor;
-  Color get underline => AppColors.underline;
-  Color get underlineFocused => AppColors.underlineFocused;
-  Color get lightBackground => AppColors.errorBackground;
-  Color get errorSmileColor => AppColors.errorSmileColor;
-  Color get unselectedNavigationItem => AppColors.unselectedNavigationItem;
-  Color get bottomNavigation => AppColors.bottomNavigationBackground;
-  Color get imageBorderColor => Colors.white;
-  Color get transparentPhotoForeground => AppColors.transparentPhotoForeground;
-  Color get transparentDarkBackground => AppColors.transparentPhotoDarkForeground;
-}
-
+import 'package:flutter_for_show/core/colors.dart';
 
 extension NewExtendedColorScheme on ColorScheme {
   Color get primaryVariant2 => AppColorsNew.primaryVariant2;
